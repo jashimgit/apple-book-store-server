@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 8000
+const port = process.env.PORT || 8000
 const cors = require('cors');
 require('dotenv').config();
 // import mongo client
@@ -15,7 +15,7 @@ let ObjectId = require('mongodb').ObjectID;
 
 // mongo db information
 
-const uri = `mongodb+srv://nodemongo:${process.env.DB_PASS}@cluster0.vewnd.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://nodemongo:${process.env.DB_PASS}@cluster0.vewnd.mongodb.net/${process.env.DB_NAME}e?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 client.connect(err => {
@@ -65,6 +65,8 @@ client.connect(err => {
 
 
 
+
+
 	 // get orders using user specific email
 
 	 app.post('/getOrderByUser', (req, res) => {
@@ -89,8 +91,15 @@ client.connect(err => {
 
 	 });
 
-	 client.close();
+
 });
+
+
+
+
+
+
+
 
 
 // define root uri
@@ -99,4 +108,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(process.env.PORT || port)
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
