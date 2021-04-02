@@ -93,13 +93,6 @@ client.connect(err => {
 });
 
 
-
-
-
-
-
-
-
 // define root uri
 app.get('/', (req, res) => {
 	// console.log(req.body)
