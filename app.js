@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 8000
+const port = 8000
 const cors = require('cors');
 require('dotenv').config();
 // import mongo client
@@ -62,8 +62,6 @@ client.connect(err => {
 	 	// console.log('log from post orders', req.body)
 	 	ordersCollection.insertOne(orders);
 	 });
-
-
 
 
 
